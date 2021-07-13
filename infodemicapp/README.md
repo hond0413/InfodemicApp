@@ -1,20 +1,24 @@
-# Infodemic
+# infodemicapp
 
-## Overview
-2020/2/20~2020/12/31のコロナウイルスに関係する日本語ツイートを使ってInfodemicの拡大の仕方を検出するためのWebアプリ
+## Project setup
+```
+npm install
+```
 
-<!-- ## Demo
-![portfolio](https://user-images.githubusercontent.com/62871691/119521109-cfebcf00-bdb5-11eb-866d-012698178aeb.gif) -->
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-## URL
-https://infodemicappv3.web.app/
+### Compiles and minifies for production
+```
+npm run build
+```
 
-## Requirement
-* MacOs 11.2.3
-* npm 6.14.11
+### Lints and fixes files
+```
+npm run lint
+```
 
-## tool
-* VueCli
-* Vue 2
-* Vuetify 
-* Chart.js
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
