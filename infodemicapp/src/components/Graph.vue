@@ -21,7 +21,7 @@ export default {
     components: {
       LineChart
     },
-    props: ['dataNumber'],
+    props: ['dataNumber', "firstColm"],
     data() {
         return {
             getApi: false,
@@ -102,6 +102,9 @@ export default {
         },
     },
     async created() {
+        if(this.firstColm) {
+            this.$store.commit('setGraphPointLabel', {val: "20200220", index: this.dataNumber})
+        }
         this.getApi = true
     },
     mounted() {
@@ -117,7 +120,7 @@ export default {
             const item = event[0]
             if(item != undefined){
                 this.$store.commit('setTopic', {val: item._chart.config.data.datasets[0].label, index:this.dataNumber})
-                this.$store.commit('setGraphPointLabel', item._chart.config.data.labels[item._index])
+                this.$store.commit('setGraphPointLabel', {val: item._chart.config.data.labels[item._index], index: this.dataNumber})
             }
         },
         getLabels(val){

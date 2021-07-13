@@ -12,7 +12,7 @@ export default new Vuex.Store({
     month: 2,
     yearRange: ['2020'],
     showDate: 'year',
-    graphPointLabel: '20200220'
+    graphPointLabel: {},
   },
   mutations: {
     setTopic(state, {val, index}){
@@ -27,8 +27,13 @@ export default new Vuex.Store({
     setShowDate(state, val){
       state.showDate = val
     },
-    setGraphPointLabel(state, val){
-      state.graphPointLabel = val
+    setGraphPointLabel(state, {val, index}){
+      Vue.set(state.graphPointLabel, index, val)
+    },
+    deleteData(state, index) {
+      Vue.delete(state.topic, index)
+      Vue.delete(state.chips, index)
+      Vue.delete(state.graphPointLabel, index)
     }
   },
   actions: {

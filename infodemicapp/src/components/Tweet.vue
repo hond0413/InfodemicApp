@@ -7,14 +7,14 @@
             <h3 class="header">
                 {{this.$store.state.topic[dataNumber]}}
                 <div style="font-weight: lighter; font-size: smaller; width: fit-content; margin: 0 5% 0 auto; color: '#aaa';">
-                    {{this.$store.state.graphPointLabel}}
+                    {{this.$store.state.graphPointLabel[dataNumber]}}
                 </div>
             </h3>
             <div class="topicHr">
                 <hr>
             </div>
             <div v-for="(item, i) in allTweetData.slice(getPageStart(pageNm), getPageEnd(pageNm))" :key="i" class="tweetList">
-                <TweetCard :id="item.id" v-if="item.id" error-message=""/>
+                <TweetCard :id="item.id" v-if="item.id" error-message="" :options="{ 'conversation': 'none' }"/>
             </div>
             <v-pagination v-model="pageNm" :length="getPageLength" color="#AAAAAA" style="text-color"></v-pagination>
         </div>
@@ -80,11 +80,11 @@ export default {
                 this.getTweetData()
             }
         )
-        this.$store.watch((state, getters) => getters.getGraphPointLabel,
+        this.$store.watch((state, getters) => getters.getGraphPointLabel[this.dataNumber],
             async () => {
                 this.getApi = false
                 await this.axios
-                .get(encodeURI(this.getUrl('https://mongo-fastapi01.herokuapp.com/api/get-tweets2', this.getTotalTagDatas + '?sdate=' + this.$store.state.graphPointLabel + '&edate=' + this.$store.state.graphPointLabel)))
+                .get(encodeURI(this.getUrl('https://mongo-fastapi01.herokuapp.com/api/get-tweets2', this.getTotalTagDatas + '?sdate=' + this.$store.state.graphPointLabel[this.dataNumber] + '&edate=' + this.$store.state.graphPointLabel[this.dataNumber])))
                 .then((response) => {
                     this.allTweetData = response.data
                     this.getApi = true
