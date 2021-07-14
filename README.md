@@ -7,7 +7,7 @@
 ![portfolio](https://user-images.githubusercontent.com/62871691/119521109-cfebcf00-bdb5-11eb-866d-012698178aeb.gif) -->
 
 ## URL
-https://infodemicappv3.web.app/
+https://infodemic-73335.web.app/
 
 ## Requirement
 * MacOs 11.2.3
